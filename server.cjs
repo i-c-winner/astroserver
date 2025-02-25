@@ -1,11 +1,13 @@
-const webSocket = require("ws")
-const http = require("http");
+import express from "express";
+import { WebSocketServer } from "ws";
+import http from "http";
 
-const server = http.createServer();
-const wss = new webSocket.WebSocketServer({ server });
+const app = express();
+const server = http.createServer(app);
+const wss = new WebSocketServer({ server });
 
 wss.on("connection", (ws) => {
-  console.log("Клиент подключился");
+  console.log("Клиент подключен");
 
   ws.on("message", (message) => {
     console.log(`Получено сообщение: ${message}`);
@@ -17,7 +19,7 @@ wss.on("connection", (ws) => {
   });
 });
 
-const PORT = process.env.PORT || 3030;
-server.listen(PORT, () => {
-  console.log(`WebSocket-сервер запущен на порту ${PORT}`);
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`Сервер работает на порту ${PORT}`);
 });

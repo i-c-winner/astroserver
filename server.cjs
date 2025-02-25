@@ -1,10 +1,11 @@
-import express from "express";
-import { WebSocketServer } from "ws";
-import http from "http";
+const express= require("express");
+const webs= require("ws")
+const http = require("http");
+
 
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocketServer({ server });
+const wss = new webs.WebSocketServer({ server });
 
 wss.on("connection", (ws) => {
   console.log("Клиент подключен");

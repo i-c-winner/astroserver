@@ -1,11 +1,11 @@
 {
-  "type": "module",
+  "type": "commonjs",
   "name": "server",
   "version": "1.0.0",
-  "main": "server.mjs",
+  "main": "server.cjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.mjs"
+    "start": "node server.cjs"
   },
   "keywords": [],
   "author": "",

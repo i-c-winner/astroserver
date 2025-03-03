@@ -15,7 +15,8 @@ wss.on("connection", (ws) => {
   if (offer) {
     ws.send(JSON.stringify({
       type: "offer",
-      payload: offer
+      payload: offer,
+      from: id
     }));
   }
   ws.on("message", (message) => {

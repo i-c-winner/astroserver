@@ -10,7 +10,9 @@ const state={
   offer: null,
   offerId: 0,
   clients: new Map(),
-  clientsSize: ()=> this.clients.size,
+  clientsSize() {
+    return this.clients.size;
+  },
   adminId: Math.round(Math.random() * 1000),
 }
 wss.on("connection", (ws) => {

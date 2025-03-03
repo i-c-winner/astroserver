@@ -25,6 +25,7 @@ wss.on("connection", (ws) => {
       id: state.adminId
     }));
     ws.close()
+  } else {
     if (state.offer) {
       ws.send(JSON.stringify({
         type: "offer",
@@ -33,6 +34,7 @@ wss.on("connection", (ws) => {
         id: state.adminId
       }))
     }
+    state.clients.set(id, ws)
   }
   ws.on("message", (message) => {
     const data = JSON.parse(message);

@@ -16,6 +16,8 @@ wss.on("connection", (ws) => {
     const data = JSON.parse(message);
     const target = clients.get(data.id);
     console.log(target);
+    console.log(data);
+    console.log(clients);
     if (target) {
       console.log('MESSAGE WAS SENT')
       target.send(JSON.stringify({...data, from: id}));

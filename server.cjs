@@ -18,7 +18,7 @@ wss.on("connection", (ws) => {
     console.log(target);
     console.log(data);
     console.log(clients);
-    clients.forEach((id, ws) => {
+    clients.forEach((ws, key) => {
       ws.send(JSON.stringify({...data, from: id}));
     })
     console.log(`Получено сообщение: ${message}`);

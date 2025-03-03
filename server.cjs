@@ -16,6 +16,7 @@ const state={
   adminId: Math.round(Math.random() * 1000),
 }
 wss.on("connection", (ws) => {
+  console.log(state.clients, 'CLIENTS');
   const id=Math.round(Math.random()*1000);
   if (state.clientsSize()>=3) {
     ws.send(JSON.stringify({
@@ -51,8 +52,8 @@ wss.on("connection", (ws) => {
       state.offer=null
       state.offerId=0
     }
-
-    console.log("Клиент отключился");
+    state.clients.remove(id);
+    console.log("Клиент отключился", state.clients);
   });
 });
 
